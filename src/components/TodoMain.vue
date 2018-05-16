@@ -4,7 +4,7 @@
     <div class="ui three column centered grid">
       <div class="column">
         <todo-list v-bind:todos="todos"></todo-list>
-        <create-todo v-on:create-todo="createTodo"></create-todo>
+        <create-todo v-on:add-todo="addTodo"></create-todo>
       </div>
     </div>
   </div>
@@ -44,8 +44,12 @@ export default{
     }
   },
   methods: {
-    createTodo(newTodo) {
-      this.todos.push(newTodo);
+    addTodo(todo){
+      this.todos.push({
+        title:todo.title,
+        project:todo.project,
+        done: false
+      });
     },
   },
 }
